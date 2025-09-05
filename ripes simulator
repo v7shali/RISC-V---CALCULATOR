@@ -1,0 +1,78 @@
+🔧 About Ripes
+
+Ripes
+ is a visual computer architecture simulator designed for education and learning.
+It allows you to:
+
+Write and execute RISC-V Assembly code
+
+Visualize pipeline execution (IF, ID, EX, MEM, WB)
+
+Inspect registers, memory, and instructions in real time
+
+Understand hazards, stalls, and instruction flow
+
+🛠 Installation
+🔹 Windows
+
+Go to the Ripes Releases page
+.
+
+Download the latest .exe file.
+
+Install and run Ripes directly.
+
+🔹 Linux (Ubuntu/Debian)
+sudo apt update
+sudo apt install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+git clone https://github.com/mortbopet/Ripes.git
+cd Ripes
+qmake
+make -j$(nproc)
+./Ripes
+
+🔹 macOS
+brew install qt
+git clone https://github.com/mortbopet/Ripes.git
+cd Ripes
+qmake
+make -j$(sysctl -n hw.logicalcpu)
+./Ripes.app
+
+
+👉 Beginners can use precompiled binaries from the GitHub Releases page instead of building from source.
+
+🚀 Example Program
+00000000 <_start>:
+    0:   10000297        auipc   x5,0x10000
+    4:   00028293        addi    x5,x5,0
+    8:   0002a303        lw      x6,0(x5)
+    c:   10000297        auipc   x5,0x10000
+   10:   ff828293        addi    x5,x5,-8
+   14:   0002a383        lw      x7,0(x5)
+   18:   00730e33        add     x28,x6,x7
+   1c:   40730eb3        sub     x29,x6,x7
+   20:   02730f33        mul     x30,x6,x7
+   24:   02734fb3        div     x31,x6,x7
+   28:   00a00893        addi    x17,x0,10
+   2c:   00000073        ecall
+
+
+
+📊 Results & Learning Outcomes
+
+Understood basic RISC-V instructions
+
+Visualized 5-stage pipeline execution
+
+Observed hazards and stalls in instruction flow
+
+Gained practical exposure to assembly-level programming
+
+📌 Future Scope
+
+Implement branching instructions
+
+Add matrix operations in assembly
+
+Extend to system-level programming
