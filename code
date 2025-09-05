@@ -1,0 +1,91 @@
+#simple calculator
+.data
+num1:       .word 20
+num2:       .word 5
+
+res_add:    .word 0
+res_sub:    .word 0
+res_mul:    .word 0
+res_div:    .word 0
+
+    .text
+    .globl _start
+
+_start:
+    # ---- Load inputs ----
+    lui     t0, %hi(num1)
+    addi    t0, t0, %lo(num1)
+    lw      t1, 0(t0)            # t1 = num1
+
+    lui     t0, %hi(num2)
+    addi    t0, t0, %lo(num2)
+    lw      t2, 0(t0)            # t2 = num2
+
+    # ---- Compute ----
+    add     t3, t1, t2           # sum
+    sub     t4, t1, t2           # difference
+    mul     t5, t1, t2           # product
+    div     t6, t1, t2           # quotient
+
+    # ---- Store results ----
+    lui     t0, %hi(res_add)
+    addi    t0, t0, %lo(res_add)
+    sw      t3, 0(t0)
+
+    lui     t0, %hi(res_sub)
+    addi    t0, t0, %lo(res_sub)
+    sw      t4, 0(t0)
+
+    lui     t0, %hi(res_mul)
+    addi    t0, t0, %lo(res_mul)
+    sw      t5, 0(t0)
+
+    lui     t0, %hi(res_div)
+    addi    t0, t0, %lo(res_div)
+    sw      t6, 0(t0)
+
+    #description
+▶️ How to Run in Ripes
+
+Open Ripes.
+
+Load the file arithmetic_riscv.s.
+
+Assemble & run the program.
+
+Open the Registers panel → observe results:
+
+t3 → addition result
+
+t4 → subtraction result
+
+t5 → multiplication result
+
+t6 → division result
+
+Open the Data Memory panel → check stored results in variables:
+
+res_add, res_sub, res_mul, res_div.
+
+📊 Example Output
+
+If num1 = 20 and num2 = 5, results will be:
+
+Addition → 25
+
+Subtraction → 15
+
+Multiplication → 100
+
+Division → 4
+
+🎯 Learning Outcomes
+
+Understanding of RISC-V instruction set (lui, addi, lw, sw, add, sub, mul, div).
+
+Knowledge of registers vs memory usage.
+
+Hands-on with Ripes pipeline visualization.
+
+Foundation for advanced topics (sorting, matrix multiplication, custom RISC-V processor design).
+
